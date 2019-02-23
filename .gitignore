@@ -1,0 +1,12 @@
+*.xml
+.xml
+/.xml
+*.idea
+/.idea
+.idea
+*.DS_Store
+.DS_Store
+/.DS_Store
+*.json
+.json
+/.json
