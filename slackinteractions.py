@@ -1,36 +1,37 @@
-from slackclient import SlackClient
+import pytz
+import httplib2
+import requests
 
+from datetime import datetime, timedelta
+from apiclient.discovery import build
+from oauth2client.client import SignedJwtAssertionCredentials
 
+with open('calendarchecker.p12', 'rb') as f:
+  key = f.read()
 
-class NoConnection(Exception):
-    pass
+service_account_name = #EMAIL ADDRESS IN OAUTH SERVICE ACCOUNT
 
-class Slacker(object):
-    __token = "<token from account>"  # You need to add the API token from your personal account
-    __connection = None
-    __channel = ["channelone", "channeltwo","general"]
+credentials = SignedJwtAssertionCredentials(
+service_account_name, key,
+scope=['https://www.googleapis.com/auth/calendar',
+'https://www.googleapis.com/auth/calendar.readonly'])
 
-    def __init__(self):
-        try:
-            self.__connection = SlackClient(self.__token)
-        except:
-            raise NoConnection("Could not authenticate with this token")
+http = httplib2.Http()
+http = credentials.authorize(http)
 
-    def sendMessage(self, channel = "general", message = None):
-        if channel is None:
-            raise NoConnection("You need to specify a valid channel : {}".format(",".join(self.__channel)))
+service = build(serviceName='calendar', version='v3', http=http)
 
-        if message is None:
-            raise NoConnection("You need to specify a message!")
+showDeleted = True
 
-        try:
-            Response = self.__connection.api_call("channel.postMessage", channel=channel, message=message)
-        except:
-            raise NoConnection("Could not send the message to Slack!")
+lists = service.calendarList().list().execute()
+pprint.pprint(lists)
 
-        return Response
-
-if __name__ == "__message__":
-    SCLK = Slacker()
-    SCLK.sendMessage(channel = "Channel to send", message = "Message to send!")
-    SCLK.sendMessage(message = "Message to send!")
+page_token = None
+while True:
+  events = service.events().list(calendarId=service_account_name, pageToken=page_token).execute()
+  pprint.pprint(events)
+  for event in events['items']:
+    print event['summary']
+  page_token = events.get('nextPageToken')
+  if not page_token:
+    break
