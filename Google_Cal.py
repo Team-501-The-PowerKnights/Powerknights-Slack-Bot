@@ -6,8 +6,13 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+events_in_week_str = input("How many events are there this week?\n")
+events_in_week = int(events_in_week_str)
+
+
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+
 
 def main():
     """Shows basic usage of the Google Calendar API.
@@ -37,17 +42,16 @@ def main():
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
     print('Getting the upcoming 10 events')
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com', timeMin=now,
-                                          maxResults=10, singleEvents=True,
-                                          orderBy='startTime').execute()
+    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',    timeMin=now,maxResults=events_in_week, singleEvents=True,orderBy='startTime').execute()
+
     events = events_result.get('items', [])
 
-    if not events:
-        print('No upcoming events found.')
+    event_info = []
+
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
-        print(start, event['summary'])
+        event_info.append(start)
+        event_info.append(event['summary'])
 
-    print(calendar.calendarList.list)
 if __name__ == '__main__':
     main()
