@@ -10,3 +10,6 @@
 *.json
 .json
 /.json
+.pickle
+*.pickle
+/.pickle 
