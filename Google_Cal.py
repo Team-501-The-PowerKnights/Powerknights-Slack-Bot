@@ -53,5 +53,7 @@ def main():
         event_info.append(start)
         event_info.append(event['summary'])
 
+    print(event_info)
+
 if __name__ == '__main__':
     main()
