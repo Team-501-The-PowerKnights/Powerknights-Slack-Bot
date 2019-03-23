@@ -5,10 +5,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-
-events_in_week_str = input("How many events are there this week?\n")
-events_in_week = int(events_in_week_str)
-
+import util.date_range as DR
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
@@ -40,20 +37,23 @@ def main():
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    now = datetime.datetime.utcnow().isoformat() + 'Z'  # 'Z' indicates UTC time
-    print('Getting the upcoming 10 events')
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',    timeMin=now,maxResults=events_in_week, singleEvents=True,orderBy='startTime').execute()
+    print("Writen to file")
+    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',    timeMin=DR.week_range()[0],timMax=DR.week_range()[1], singleEvents=True,orderBy='startTime').execute()
 
     events = events_result.get('items', [])
+    #
+    # event_info = []
+    #
+    # for event in events:
+    #     start = event['start'].get('dateTime', event['start'].get('date'))
+    #     event_info.append(start)
+    #     event_info.append(event['summary'])
 
-    event_info = []
+    # print(event_info)
 
-    for event in events:
-        start = event['start'].get('dateTime', event['start'].get('date'))
-        event_info.append(start)
-        event_info.append(event['summary'])
-
-    print(event_info)
+    with open("events.txt", "a") as events_file:
+        events_file.write(events)
 
 if __name__ == '__main__':
+    pass
     main()
