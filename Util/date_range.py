@@ -1,5 +1,17 @@
 import datetime
 
+def str_lst_ints(string, seperator_key):
+    """
+    Turns a string into a list of integers
+    :return lst
+    """
+    nums = []
+    lst_strs = string.split(seperator_key)
+    for string in lst_strs:
+        integer_form = int(string)
+        nums.append(integer_form)
+    return nums
+    
 def week_range():
     """
     Get the RFC 3339 timestamps for the start and end of the week
