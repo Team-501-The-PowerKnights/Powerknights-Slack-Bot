@@ -1,16 +1,18 @@
 import datetime
 
-def str_lst_ints(string, seperator_key):
+
+def str_lst_ints(string, separator_key):
     """
     Turns a string into a list of integers
     :return lst
     """
     nums = []
-    lst_strs = string.split(seperator_key)
-    for string in lst_strs:
+    lst_str = string.split(separator_key)
+    for string in lst_str:
         integer_form = int(string)
         nums.append(integer_form)
     return nums
+
 
 def week_range():
     """
@@ -24,8 +26,8 @@ def week_range():
     now = datetime.date(d.year, d.month, d.day).isoformat()
     now_formatted = datetime.date(d.year, d.month, d.day)
     end_time = now_formatted + datetime.timedelta(days=days_till_end)
-    start_and_end_dates.append(str(now) + "Z")
-    start_and_end_dates.append(str(end_time) + "Z")
+    start_date_lst = str_lst_ints(now, "-")
+    end_date_lst = str_lst_ints(end_time, "-")
     return start_and_end_dates
 
 print(week_range())
