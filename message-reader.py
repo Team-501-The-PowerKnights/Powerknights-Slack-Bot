@@ -3,8 +3,8 @@ from slackclient import SlackClient # used to send the message to slack
 import json # used to get slack key from json file
 
 # write key to json file
-#x = {"key": 123456789} # insert your own key
-#with open("key.json", "w") as file:
+# x = {"key": 123456789} # insert your own key
+# with open("key.json", "w") as file:
 #    json.dump(x, file)
 
 # json variables
