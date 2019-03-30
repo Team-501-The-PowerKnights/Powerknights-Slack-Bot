@@ -5,7 +5,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-import util.date_range as DR
+import date_range as DR
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
@@ -38,7 +38,7 @@ def main():
 
     # Call the Calendar API
     print("Writen to file")
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',    timeMin=DR.week_range()[0],timMax=DR.week_range()[1], singleEvents=True,orderBy='startTime').execute()
+    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMin=DR.week_range()[0],timeMax=DR.week_range()[1], singleEvents=True,orderBy='startTime').execute()
 
     events = events_result.get('items', [])
     #
