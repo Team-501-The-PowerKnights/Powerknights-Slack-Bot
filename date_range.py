@@ -23,7 +23,6 @@ def str_lst_num(string, seperator_key, int_bool):
             nums.append(integer_form)
         return nums
 
-
 def week_range():  # Currently working version (Missing start)
     """
     Get the RFC 3339 timestamps for the start and end of the week
@@ -41,8 +40,10 @@ def week_range():  # Currently working version (Missing start)
     # Finding end of the week:
     days_till_end = 6 - current_weekday
     end_delta = datetime.timedelta(days=days_till_end)
+    end_date_str = str(current_day + end_delta)
     end_date_lst = str_lst_num(end_date_str, "-", True)
     end_date = datetime.datetime(end_date_lst[0], end_date_lst[1], end_date_lst[2]).isoformat()
     dates.append(end_date)
-    print("End date =", end_date)
     return dates
+
+print(week_range())
