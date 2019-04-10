@@ -8,6 +8,7 @@ except FileNotFoundError:
 
 channels = {
            "polls":"CE36EEKA9",
+           "general":"C5DEPCK24",
            }
 
 
@@ -18,7 +19,7 @@ sc = SlackClient(slacktoken)
 
 sc.api_call(
   "chat.postMessage",
-  channel="CE36EEKA9",
-  text="Testing Testing",
+  channel=channels["general"],
+  text="Hey Everyone!",
   as_user="false"
 )
