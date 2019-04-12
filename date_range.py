@@ -23,6 +23,7 @@ def str_lst_num(string, seperator_key, int_bool):
             nums.append(integer_form)
         return nums
 
+
 def week_range():  # Currently working version (Missing start)
     """
     Get the RFC 3339 timestamps for the start and end of the week
