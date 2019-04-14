@@ -10,7 +10,6 @@ import date_range as DR
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
-
 def main():
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
@@ -49,7 +48,7 @@ def main():
     #     event_info.append(start)
     #     event_info.append(event['summary'])
 
-    # print(event_info)
+    # print(event_info) 
 
     with open("events.txt", "a") as events_file:
         events_file.write(events)
