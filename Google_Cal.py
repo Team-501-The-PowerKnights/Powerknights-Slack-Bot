@@ -37,7 +37,7 @@ def main():
 
     # Call the Calendar API
     print("Writen to file")
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMin=DR.week_range()[0],timeMax=DR.week_range()[1], singleEvents=True,orderBy='startTime').execute()
+    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMin=DR.week_range()[0],timeMax=DR.week_range()[1]).execute()
 
     events = events_result.get('items', [])
     #
@@ -48,7 +48,7 @@ def main():
     #     event_info.append(start)
     #     event_info.append(event['summary'])
 
-    # print(event_info) 
+    # print(event_info)
 
     with open("events.txt", "a") as events_file:
         events_file.write(events)
