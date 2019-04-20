@@ -46,3 +46,7 @@ def week_range():  # Currently working version (Missing start)
     end_date = datetime.datetime(end_date_lst[0], end_date_lst[1], end_date_lst[2]).isoformat()
     dates.append(end_date)
     return dates
+
+
+# Testing:
+print(week_range())
