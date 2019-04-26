@@ -37,12 +37,16 @@ def main():
 
     # Call the Calendar API
     print("Writen to file")
+    date_list = DR.week_range()
+    print(date_list)
     events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
 
-    # events_lst = events_result.get('items', [])
-    print(events_result)
-    # print(events_result)
-    #
+    events_lst = events_result.get('items')
+    print("")
+    print("")
+    print("Events are...")
+    print(events_lst)
+    
     event_info = []
     #
     # for event in events_result:
@@ -59,3 +63,4 @@ def main():
 # if __name__ == '__main__':
 #     pass
 #     main()
+main()
