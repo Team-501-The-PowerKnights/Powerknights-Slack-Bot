@@ -10,9 +10,9 @@ import date_range as DR
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 
-def main():
-    """Shows basic usage of the Google Calendar API.
-    Prints the start and name of the next 10 events on the user's calendar.
+def main(min_time, max_time):
+    """
+    Gets all the events for one calendar during a certain time frame.
     """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
@@ -36,31 +36,11 @@ def main():
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    print("Writen to file")
     date_list = DR.week_range()
     print(date_list)
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
+    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMax=DR.min_time, timeMin=max_time, pageToken=None).execute()
 
     events_lst = events_result.get('items')
-    print("")
-    print("")
-    print("Events are...")
-    print(events_lst)
-    
-    event_info = []
-    #
-    # for event in events_result:
-    #     start = event['start'].get('dateTime', event['start'].get('date'))
-    #     event_info.append(start)
-    #     event_info.append(event['summary'])
-    #
-    #
-    # print(event_info)
+    return events_lst
 
-#     with open("events.txt", "a") as events_file:
-#         events_file.write(events)
-#
-# if __name__ == '__main__':
-#     pass
-#     main()
-main()
+print(main(DR.week_range()[0], week_range()[1]))
