@@ -59,7 +59,7 @@ def emoji_react(emoji,message,get_info):
     "reactions.add",
     channel=message["channel"],
     name=emoji,
-    time_stamp = message['ts'],
+    timestamp = message['ts'],
     )
     if get_info:
         return action
