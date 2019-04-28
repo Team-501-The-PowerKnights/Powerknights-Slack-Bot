@@ -43,13 +43,11 @@ def send_message(channel_loc,message,get_info):
         return action
 
 
-def emoji_react(emoji,channel_loc,message,get_info):
+def emoji_react(emoji,message,get_info):
     """
     Bot will react with an emoji to a message in Slack
     :param emoji that will be reacted
         :type string
-    :param channel of where the bot will react
-        :type str
     :param message that was posted using this bot to react too
         type: dictonary
     :param see return
@@ -59,16 +57,14 @@ def emoji_react(emoji,channel_loc,message,get_info):
     """
     action = sc.api_call(
     "reactions.add",
-    channel=channel_loc,
+    channel=message["channel"],
     name=emoji,
-    time_stamp = message.tc,
+    time_stamp = message['ts'],
     )
     if get_info:
         return action
 
-
-with open("message.txt") as message_file:
-    message_from_file = str(message_file.read())
+message_from_file = "Testing Testing"
 
 response = send_message(channels["bot-dev"],message_from_file,True)
-emoji_reaction = emoji_react("one",channels["general"],response,False)
+emoji_reaction = emoji_react("thumbsup",response,False)
