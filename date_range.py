@@ -53,3 +53,4 @@ def week_range():  # Currently working version (Missing start)
 
 # Testing:
 # print(week_range())
+# print((week_range()[0]).year())
