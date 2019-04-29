@@ -101,6 +101,8 @@ def create_message(events, get_info):
         print("This bot currently doesn't support more than 35 events in one week. Please put an issue on github that you would like this to be increased.")
     with open("message.txt") as message_file:
         final_message = message_file.read()
+    with open("message.txt", "w") as message_file:
+        message_file.write("")
     if get_info:
         return_information = []
         return_information.append(final_message)
