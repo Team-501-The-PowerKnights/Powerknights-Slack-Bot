@@ -36,11 +36,11 @@ def get_events():
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    events_result = service.events().list(calendarId='d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com',timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
-
+    events_result = service.events().list(calendarId='1q2tbdjmrkb8mj0cbp5m30ptd8@group.calendar.google.com',timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
     events_lst = events_result.get('items')
     return events_lst
 
 
 # Testing:
-# print(get_events()[0]['start']['dateTime'])
+# for event in get_events():
+#     event["description"]
