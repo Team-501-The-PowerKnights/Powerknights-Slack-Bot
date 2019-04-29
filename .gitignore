@@ -7,9 +7,6 @@
 *.DS_Store
 .DS_Store
 /.DS_Store
-*.json
-.json
-/.json
 .pickle
 *.pickle
 /.pickle
@@ -17,3 +14,5 @@ util/__pycache__/date_range.cpython-37.pyc
 *.pyc
 slack_token.txt
 __pycache__
+credentials.json
+*credentials.json
