@@ -26,9 +26,9 @@ def iso_extract_info(string):
     return elements
 
 
-# Testing:
-print("[year, month, day, military_time_hour, minutes, hours]")
-print(iso_extract_info('2019-04-27T16:00:00-04:00'))
+# # Testing:
+# print("[year, month, day, military_time_hour, minutes, hours]")
+# print(iso_extract_info('2019-04-27T16:00:00-04:00'))
 
 
 # Doesn't use the "iso_extract_info" function
@@ -55,26 +55,6 @@ def iso_format_to_regular(string):
 
 # Testing:
 # print(iso_format_to_regular('2019-04-27T16:00:00-04:00'))
-
-
-# Doesn't use the "iso_extract_info" function
-def multiday_checker_ISO(start_date, end_date):
-    """
-    Will check if an event is more than one day long
-    :param start_date: ISO formatted start of event
-    :param end_date: ISO formatted end of event
-    :return: Boolean
-    """
-    start_characters = list(start_date)
-    start_month_int = int("".join(characters[5:7]))
-    start_day_int = int("".join(characters[8:10]))
-    end_characters = list(start_date)
-    end_month_int = int("".join(characters[5:7]))
-    end_day_int = int("".join(characters[8:10]))
-    if start_month_int != end_month_int or start_day_int != end_day_int:
-        return False
-    else:
-        return True
 
 
 # Doesn't use the "iso_extract_info" function
@@ -128,10 +108,10 @@ def STRANGE_string_weekday(string):
     :param string: Google formatted string for the date
     :return: string
     """
-    items = string.split("-")
-    year_int = int(items[0])
-    month_int = int(items[1])
-    day_int = int(items[2])
+    items = string.split("/")
+    year_int = int(items[2])
+    month_int = int(items[0])
+    day_int = int(items[1])
     datetime_instance = datetime.date(year_int,month_int,day_int)
     week_day_number = datetime_instance.weekday()
     if week_day_number == 0:
