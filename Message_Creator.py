@@ -15,23 +15,23 @@ def create_message(events, get_info):
     starter_string_lst = [
     seperator,
     "@channel",
-    "*What days wil you be coming to this week? Please react with the corresponding emoji:*",
-    "Link to calendar: "
+    "*What days will you be coming to this week? Please react with the corresponding emoji:*",
+    "Link to calendar: \n"
     ]
     starter_string = "\n".join(starter_string_lst)
     emojis = [
-    "one","two","three",
-    "four","five","six",
-    "seven","eight","nine",
-    "keycap_ten","100","capital_abcd",
-    "abcd","1234","symbols",
-    'a', 'ab', 'b',
-    'cl', 'cool', 'free',
-    'information_source', 'id', 'm',
-    'new', 'ng', 'o2',
-    'ok', 'parking', 'sos',
-    'up', 'vs', 'koko', 'sa',
-    'u6708',
+    ":one:",":two:",":three:",
+    ":four:",":five:",":six:",
+    ":seven:",":eight:",":nine:",
+    ":keycap_ten:",":100:",":capital_abcd:",
+    ":abcd:",":1234:",":symbols:",
+    ':a:', ':ab:', ':b:',
+    ':cl:', ':cool:', ':free:',
+    ':information_source:', ':id:', ':m:',
+    ':new:', ':ng:', ':o2:',
+    ':ok:', ':parking:', ':sos:',
+    ':up:', ':vs:', ':koko:', ':sa:',
+    ':u6708:',
     ]
     used_emojis = []
     if len(events) < 35:
@@ -41,7 +41,10 @@ def create_message(events, get_info):
         events_str = [starter_string]
         for event in events:
             event_name = event['summary']
-            description = event['description']
+            try:
+                description = event["description"]
+            except KeyError:
+                description = "No description"
             location = event['location']
             try:
                 start_time_raw = event['start']['dateTime']
@@ -106,7 +109,11 @@ def create_message(events, get_info):
     if get_info:
         return_information = []
         return_information.append(final_message)
-        return_information.append(used_emojis)
+        user_emojis_fix = []
+        for emoji in used_emojis:
+            fixed_emoji = emoji.strip(":")
+            user_emojis_fix.append(fixed_emoji)
+        return_information.append(user_emojis_fix)
         return return_information
     else:
         return final_message
