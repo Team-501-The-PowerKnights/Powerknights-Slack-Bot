@@ -171,6 +171,14 @@ def ISO_string_weekday(string):
 # print(ISO_string_weekday('2019-06-28T16:00:00-04:00'))
 
 
+def remove_newline(string):
+    """
+    Will remove the \n statment at the end of a line.
+    :param string: the string that is going to be checked
+    :return: fixed string
+    """
+    characters = list(string)
+    if characters[-1] == "\n"
 
 def get_settings():
     """
