@@ -1,4 +1,6 @@
 # Slack-bot
+
+# Warning: This is a really crappy README right now. It will be fixed once I finish the application
 Slack bot that will take all events under a certain calendar for the next week and set up a poll like system to see who is coming which days
 
 ## Modules Needed:
