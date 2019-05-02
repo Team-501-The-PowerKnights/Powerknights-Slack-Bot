@@ -14,3 +14,4 @@ util/__pycache__/date_range.cpython-37.pyc
 *.pyc
 slack_token.txt
 __pycache__
+credentials.json
