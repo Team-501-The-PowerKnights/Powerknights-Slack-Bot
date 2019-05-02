@@ -15,7 +15,7 @@ def create_message(events, get_info):
     starter_string_lst = [
     seperator,
     "*What days will you be coming to this week? Please react with the corresponding emoji:*",
-    "Link to calendar: \n"
+    "Link to calendar: https://bit.ly/2RlxQCu\n"
     ]
     starter_string = "\n".join(starter_string_lst)
     emojis = [
@@ -98,6 +98,7 @@ def create_message(events, get_info):
                 with open("message.txt", "a") as message_file:
                     for line in strings:
                         message_file.write(line + "\n")
+                    message_file.write("If you have any questions about polls any suggestions feel free to email me at matthewgleich@gmail.com or DM me at @Matthew Gleich",)
     else:
         print("Error:")
         print("This bot currently doesn't support more than 35 events in one week. Please put an issue on github that you would like this to be increased.")
