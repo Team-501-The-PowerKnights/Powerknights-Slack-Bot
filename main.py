@@ -11,8 +11,14 @@ try:
         slacktoken = slacktoken_invalid.strip("\n")
 except FileNotFoundError:
     print("Please make the slack_token.txt file and put your Slack API key in it")
+
 sc = SlackClient(slacktoken)
 
+channels = {
+           "polls":"CE36EEKA9",
+           "general":"C5DEPCK24",
+           "bot-dev":"CGE8GGJ0G",
+           }
 
 def main():
     """
