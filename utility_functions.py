@@ -169,33 +169,3 @@ def ISO_string_weekday(string):
 
 # Testing:
 # print(ISO_string_weekday('2019-06-28T16:00:00-04:00'))
-
-
-def remove_newline(string):
-    """
-    Will remove the \n statment at the end of a line.
-    :param string: the string that is going to be checked
-    :return: fixed string
-    """
-    characters = list(string)
-    if characters[-1] == "\n"
-
-def get_settings():
-    """
-    Will get the settings from the settings.txt file
-    :return: lst
-    """
-    with open("settings.txt") as settings_file:
-        original_content = settings_file.read()
-        items = original_content.split("=")
-        print(items)
-        fixed_items = []
-        for item in items:
-            item.strip("\n")
-            fixed_items.append(item)
-        settings = [fixed_items[1], fixed_items[3]]
-        return settings
-
-
-# Testing
-print(get_settings())
