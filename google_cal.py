@@ -37,10 +37,7 @@ def get_events():
     service = build('calendar', 'v3', credentials=creds)
 
     # Call the Calendar API
-    with open("settings.json") as settings_json:
-        calendarID_file = str(json.load(settings_json)["calendarID"])
-    
-    events_result = service.events().list(calendarId=calendarID_file,timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
+    events_result = service.events().list(calendarId="d52gionm3cmrhsd0b4vol77okg@group.calendar.google.com",timeMax=DR.week_range()[1], timeMin=DR.week_range()[0], pageToken=None).execute()
     events_lst = events_result.get('items')
     return events_lst
 
