@@ -2,6 +2,7 @@ import os
 from slackclient import SlackClient
 
 
+
 def send_message(key, channel_loc,message,get_info):
     """
     Bot will send a message to Slack
