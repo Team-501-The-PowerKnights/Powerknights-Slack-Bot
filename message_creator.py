@@ -64,7 +64,7 @@ def create_message(events, get_info):
                     strings = [
                     "_*{name}*_ = {sign}".format(name=event_name,sign=emoji),
                     description,
-                    "{start} - {end}".format(start=start_time,end=end_time),
+                    "`{start} - {end}`".format(start=start_time,end=end_time),
                     seperator
                     ]
                     with open("message.txt", "a") as message_file:
@@ -77,7 +77,7 @@ def create_message(events, get_info):
                     strings = [
                     "_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
                     event_name,
-                    start_time,
+                    "`" + start_time + "`",
                     seperator
                     ]
                     with open("message.txt", "a") as message_file:
@@ -92,7 +92,7 @@ def create_message(events, get_info):
                 strings = [
                 "_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
                 event_name,
-                "{start} - {end}".format(start=start_time,end=end_time),
+                "`{start} - {end}`".format(start=start_time,end=end_time),
                 seperator
                 ]
                 with open("message.txt", "a") as message_file:
