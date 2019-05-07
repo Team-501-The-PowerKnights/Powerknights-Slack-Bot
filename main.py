@@ -33,7 +33,7 @@ def main():
     emojis = message_info[1]
 
     # Post message to Slack
-    posted_message = SL.send_message(sc,channels["bot-dev"],message_to_post,True)
+    posted_message = SL.send_message(sc,channels["general"],message_to_post,True)
 
     # React the emojis to Slack
     for emoji in emojis:
