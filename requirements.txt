@@ -1,0 +1,4 @@
+google-api-python
+google-auto-httplib2
+google-auth-oauthlib
+slackclient

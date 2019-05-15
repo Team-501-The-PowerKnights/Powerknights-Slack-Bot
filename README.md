@@ -11,7 +11,7 @@ At the moment the PowerKnights Slack bot only has one function. That function is
 There are a few missing files that are used for the API tokens. Those files are slack_token.txt and credentials.json. slack_token.txt should have the oauth token for the slack bot and the credentials.json should be the credentials downloaded when you setup the google calendar API.
 
 ## Modules
-If you already have pip installed on your machine, you can just run the dependencies shell file by typing `sh dependencies.sh` when in this directory and it will install all the dependencies for you.
+If you already have pip installed on your machine, you can just run the dependencies text file by typing `python -r requirements.txt` when in this directory and it will install all the dependencies for you.
 * google-api-python
 * google-auth-httplib2
 * google-auth-oauthlib
