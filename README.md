@@ -38,4 +38,5 @@ token.pickle | Place for the google api token to be stored. Once this is created
 * Compose messages using blocks
 
 ## Contributors
-* Matthew Gleich
+* Matthew Gleich (@Matt-Gleich)
+* Freddy Matthews (@Freddy0001)
