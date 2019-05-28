@@ -24,7 +24,7 @@ def str_lst_num(string, seperator_key, int_bool):
         return nums
 
 
-def week_range():  # Currently working version (Missing start)
+def week_range():
     """
     Get the RFC 3339 timestamps for the start and end of the week
     :return: lst
