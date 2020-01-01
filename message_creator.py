@@ -90,10 +90,10 @@ def create_message(events, get_info):
                 start_time = UF.iso_format_to_regular(start_time_raw)
                 end_time = UF.iso_format_to_regular(end_time_raw)
                 strings = [
-                ">_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
-                ">" + event_name,
-                ">`{start} - {end}`".format(start=start_time,end=end_time),
-                ">" + seperator
+                "_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
+                "" + event_name,
+                "`{start} - {end}`".format(start=start_time,end=end_time),
+                "" + seperator
 
                 ]
                 with open("message.txt", "a") as message_file:
