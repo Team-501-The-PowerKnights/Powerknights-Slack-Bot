@@ -1,5 +1,6 @@
 import utility_functions as UF
 
+
 def create_message(events, get_info):
     """
     Creates the message that will be posted to slack based of the events from the google calendar
@@ -13,24 +14,24 @@ def create_message(events, get_info):
     """
     seperator = "---------------------------------------------"
     starter_string_lst = [
-    ">" + seperator,
-    ">*What days will you be coming to this week? Please react with the corresponding emoji:*",
-    ">Link to calendar: https://bit.ly/2RlxQCu\n"
+        ">" + seperator,
+        ">*What days will you be coming to this week? Please react with the corresponding emoji:*",
+        ">Link to calendar: https://bit.ly/2RlxQCu\n"
     ]
     starter_string = "\n".join(starter_string_lst)
     emojis = [
-    ":one:",":two:",":three:",
-    ":four:",":five:",":six:",
-    ":seven:",":eight:",":nine:",
-    ":keycap_ten:",":100:",":capital_abcd:",
-    ":abcd:",":1234:",":symbols:",
-    ':a:', ':ab:', ':b:',
-    ':cl:', ':cool:', ':free:',
-    ':information_source:', ':id:', ':m:',
-    ':new:', ':ng:', ':o2:',
-    ':ok:', ':parking:', ':sos:',
-    ':up:', ':vs:', ':koko:', ':sa:',
-    ':u6708:',
+        ":one:", ":two:", ":three:",
+        ":four:", ":five:", ":six:",
+        ":seven:", ":eight:", ":nine:",
+        ":keycap_ten:", ":100:", ":capital_abcd:",
+        ":abcd:", ":1234:", ":symbols:",
+        ':a:', ':ab:', ':b:',
+        ':cl:', ':cool:', ':free:',
+        ':information_source:', ':id:', ':m:',
+        ':new:', ':ng:', ':o2:',
+        ':ok:', ':parking:', ':sos:',
+        ':up:', ':vs:', ':koko:', ':sa:',
+        ':u6708:',
     ]
     used_emojis = []
     if len(events) < 35:
@@ -57,15 +58,18 @@ def create_message(events, get_info):
                 all_day_event = True
                 start_time = UF.fix_time(start_time_raw)
                 end_time = UF.fix_time(end_time_raw)
-                multiday = UF.multiday_checker_STRANGE(start_time_raw, end_time_raw)
+                multiday = UF.multiday_checker_STRANGE(
+                    start_time_raw, end_time_raw)
                 if multiday:
                     emoji = emojis.pop(0)
                     used_emojis.append(emoji)
                     strings = [
-                    ">_*{name}*_ = {sign}".format(name=event_name,sign=emoji),
-                    ">" + description,
-                    ">`{start} - {end}`".format(start=start_time,end=end_time),
-                    ">" + seperator
+                        ">_*{name}*_ = {sign}".format(
+                            name=event_name, sign=emoji),
+                        ">" + description,
+                        ">`{start} - {end}`".format(start=start_time,
+                                                    end=end_time),
+                        ">" + seperator
                     ]
                     with open("message.txt", "a") as message_file:
                         for line in strings:
@@ -75,10 +79,11 @@ def create_message(events, get_info):
                     emoji = emojis.pop(0)
                     used_emojis.append(emoji)
                     strings = [
-                    ">_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
-                    ">" + event_name,
-                    ">`" + start_time + "`",
-                    ">" + seperator
+                        ">_*{weekday}*_ = {sign}".format(
+                            weekday=day_of_week, sign=emoji),
+                        ">" + event_name,
+                        ">`" + start_time + "`",
+                        ">" + seperator
                     ]
                     with open("message.txt", "a") as message_file:
                         for line in strings:
@@ -90,16 +95,18 @@ def create_message(events, get_info):
                 start_time = UF.iso_format_to_regular(start_time_raw)
                 end_time = UF.iso_format_to_regular(end_time_raw)
                 strings = [
-                "_*{weekday}*_ = {sign}".format(weekday=day_of_week,sign=emoji),
-                "" + event_name,
-                "`{start} - {end}`".format(start=start_time,end=end_time),
-                "" + seperator
+                    "_*{weekday}*_ = {sign}".format(
+                        weekday=day_of_week, sign=emoji),
+                    "" + event_name,
+                    "`{start} - {end}`".format(start=start_time, end=end_time),
+                    "" + seperator
 
                 ]
                 with open("message.txt", "a") as message_file:
                     for line in strings:
                         message_file.write(">" + line + "\n")
-                    message_file.write(">If you have any questions about polls any suggestions feel free to email me at matthewgleich@gmail.com or DM me at @Matthew Gleich",)
+                    message_file.write(
+                        ">If you have any questions about polls any suggestions feel free to email me at matthewgleich@gmail.com or DM me at @Matthew Gleich",)
     else:
         print("Error:")
         print("This bot currently doesn't support more than 35 events in one week. Please put an issue on github that you would like this to be increased.")

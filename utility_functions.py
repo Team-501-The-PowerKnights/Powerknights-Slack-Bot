@@ -1,5 +1,6 @@
 import datetime
 
+
 def iso_extract_info(string):
     """
     Will get all of the info and return it as an array
@@ -46,10 +47,12 @@ def iso_format_to_regular(string):
     minutes_int = "".join(characters[14:16])
     if military_time_hours_int > 12:
         hours = military_time_hours_int - 12
-        final_string = "{month}/{day}/{year} {hour}:{minute}PM".format(month=month_int, day=day_int, year=year_int, hour=hours, minute=minutes_int)
+        final_string = "{month}/{day}/{year} {hour}:{minute}PM".format(
+            month=month_int, day=day_int, year=year_int, hour=hours, minute=minutes_int)
         return final_string
     else:
-        final_string = "{month}/{day}/{year} {hour}:{minute}AM".format(month=month_int, day=day_int, year=year_int, hour=military_time_hours_int, minute=minutes_int)
+        final_string = "{month}/{day}/{year} {hour}:{minute}AM".format(
+            month=month_int, day=day_int, year=year_int, hour=military_time_hours_int, minute=minutes_int)
         return final_string
 
 
@@ -68,7 +71,8 @@ def fix_time(strange_date):
     year_int = int(items[0])
     month_int = int(items[1])
     day_int = int(items[2])
-    new_str = "{month}/{day}/{year}".format(month=month_int, day=day_int,year=year_int)
+    new_str = "{month}/{day}/{year}".format(
+        month=month_int, day=day_int, year=year_int)
     return new_str
 
 
@@ -112,7 +116,7 @@ def STRANGE_string_weekday(string):
     year_int = int(items[2])
     month_int = int(items[0])
     day_int = int(items[1])
-    datetime_instance = datetime.date(year_int,month_int,day_int)
+    datetime_instance = datetime.date(year_int, month_int, day_int)
     week_day_number = datetime_instance.weekday()
     if week_day_number == 0:
         return "Monday"
@@ -147,7 +151,7 @@ def ISO_string_weekday(string):
     year_int = int("".join(characters[0:4]))
     month_int = int("".join(characters[5:7]))
     day_int = int("".join(characters[8:10]))
-    datetime_instance = datetime.date(year_int,month_int,day_int)
+    datetime_instance = datetime.date(year_int, month_int, day_int)
     week_day_number = datetime_instance.weekday()
     if week_day_number == 0:
         return "Monday"

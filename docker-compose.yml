@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  501-slack-bot:
+    container_name: slack-bot
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./secrets:/src/secrets
