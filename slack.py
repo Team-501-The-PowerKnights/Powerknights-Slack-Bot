@@ -2,8 +2,7 @@ import os
 from slackclient import SlackClient
 
 
-
-def send_message(key, channel_loc,message,get_info):
+def send_message(key, channel_loc, message, get_info):
     """
     Bot will send a message to Slack
     :param channel where the message wants to be send.
@@ -17,10 +16,10 @@ def send_message(key, channel_loc,message,get_info):
     """
     sc = key
     action = sc.api_call(
-    "chat.postMessage",
-    channel=channel_loc,
-    text=message,
-    as_user="false"
+        "chat.postMessage",
+        channel=channel_loc,
+        text=message,
+        as_user="false"
     )
     if action["ok"]:
         print("Poll has been posted")
@@ -30,7 +29,7 @@ def send_message(key, channel_loc,message,get_info):
         return action
 
 
-def emoji_react(key, emoji,message,get_info):
+def emoji_react(key, emoji, message, get_info):
     """
     Bot will react with an emoji to a message in Slack
     :param emoji that will be reacted
@@ -44,10 +43,10 @@ def emoji_react(key, emoji,message,get_info):
     """
     sc = key
     action = sc.api_call(
-    "reactions.add",
-    channel=message["channel"],
-    name=emoji,
-    timestamp = message['ts'],
+        "reactions.add",
+        channel=message["channel"],
+        name=emoji,
+        timestamp=message['ts'],
     )
     if get_info:
         return action
