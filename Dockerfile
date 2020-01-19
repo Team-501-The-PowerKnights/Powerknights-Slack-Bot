@@ -1,6 +1,8 @@
 FROM python:3.6-stretch
 
-RUN pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+# Install dependencies
+RUN pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+RUN pip3 install slackclient
 
 COPY . .
 
