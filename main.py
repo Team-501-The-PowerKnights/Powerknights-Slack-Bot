@@ -40,16 +40,10 @@ def main():
     for emoji in emojis:
         SL.emoji_react(sc, emoji, posted_message, False)
 
-    if "gen" in correct_message.lower():
-        posted_message = SL.send_message(
-            sc, channels["general"], message_to_post, True)
-        for emoji in emojis:
-            SL.emoji_react(sc, emoji, posted_message, False)
-    elif "y" in correct_message.lower():
-        posted_message = SL.send_message(
-            sc, channels["polls"], message_to_post, True)
-        for emoji in emojis:
-            SL.emoji_react(sc, emoji, posted_message, False)
+    # posted_message = SL.send_message(
+    #     sc, channels["general"], message_to_post, True)
+    # for emoji in emojis:
+    #     SL.emoji_react(sc, emoji, posted_message, False)
 
 
 main()
